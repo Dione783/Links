@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongo</title>
+</head>
+<body>
+    <h1>Link Models</h1>
+    <form action="./" method="POST">
+        <fieldset>
+            <input type="text" value="" name="title" placeholder="title">
+            <input type="text"  value="" name="description" placeholder="description">
+            <input type="text" value="" name="url" placeholder="url">
+            <button>Send</button>
+        </fieldset>
+    </form>
+    <button id="button">delete</button>
+    <%if(err){%>
+        <h2><%=err.message%></h2>
+    <%}%>
+    <script>
+        let button = document.getElementById("button");
+        button.addEventListener('click',()=>{
+            let id = "6287e0763d1f3301f3dfee89"
+            fetch("/" + id,{method:'DELETE'}).then(res=>{
+                res.text().then(id=>{
+                    console.log(id);
+                    document.getElementById(id).remove();
+                })
+            })
+        });
+    </script>
+</body>
+</html>
